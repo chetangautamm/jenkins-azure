@@ -1,38 +1,22 @@
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: myweb
-  name: myweb
+    app: sipp
+  name: sipp
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: myweb
+      app: sipp
   template:
     metadata:
       labels:
-        app: myweb
+        app: sipp
     spec:
       containers:
-      - image: 192.168.1.81:5000/justme/myweb:1
+      - image: chetangautamm/repo:sipp.v3
         imagePullPolicy: Always
-        name: myweb
+        name: sipp
 
----
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    app: myweb
-  name: myweb
-spec:
-  ports:
-  - nodePort: 32223
-    port: 80
-    protocol: TCP
-    targetPort: 80
-  selector:
-    app: myweb
-  type: NodePort
+
